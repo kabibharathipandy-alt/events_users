@@ -1,0 +1,87 @@
+# ----------------------------
+# General
+# ----------------------------
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.history
+.svn/
+.atom/
+.build/
+build/
+coverage/
+
+# ----------------------------
+# IDE Files
+# ----------------------------
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# VS Code
+.vscode/
+
+# ----------------------------
+# Flutter / Dart
+# ----------------------------
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub/
+.pub-cache/
+
+# Generated API Docs
+doc/api/
+
+# Flutter build files
+**/ios/Flutter/.last_build_id
+
+# ----------------------------
+# Android
+# ----------------------------
+android/.gradle/
+android/app/debug/
+android/app/profile/
+android/app/release/
+android/local.properties
+android/key.properties
+
+# Keystore Files
+*.jks
+*.keystore
+
+# ----------------------------
+# iOS / macOS
+# ----------------------------
+ios/Pods/
+ios/.symlinks/
+ios/Flutter/Flutter.framework
+ios/Flutter/Flutter.podspec
+
+macos/Pods/
+macos/.symlinks/
+
+# ----------------------------
+# Windows Desktop
+# ----------------------------
+windows/flutter/ephemeral/
+
+# ----------------------------
+# Linux Desktop
+# ----------------------------
+linux/flutter/ephemeral/
+
+# ----------------------------
+# Web
+# ----------------------------
+web/renderers/
+
+# ----------------------------
+# Symbolication
+# ----------------------------
+app.*.symbols
+app.*.map.json
