@@ -11,9 +11,7 @@ class PortalLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: child,
-    );
+    return Scaffold(backgroundColor: AppColor.background, body: child);
   }
 
   PreferredSizeWidget _buildAppBar(BuildContext context) {
@@ -24,20 +22,53 @@ class PortalLayout extends StatelessWidget {
         onTap: () => context.go('/'),
         child: const Text(AppString.appName),
       ),
-      backgroundColor: AppColor.primary,
+      backgroundColor: AppColor.background,
       foregroundColor: AppColor.white,
       actions: [
         if (isDesktop) ...[
-          TextButton(onPressed: () => context.go('/'), child: const Text('Home', style: TextStyle(color: AppColor.white))),
-          TextButton(onPressed: () => context.go('/sessions'), child: const Text('Agenda', style: TextStyle(color: AppColor.white))),
-          TextButton(onPressed: () => context.go('/speakers'), child: const Text('Speakers', style: TextStyle(color: AppColor.white))),
-          TextButton(onPressed: () => context.go('/sponsors'), child: const Text('Sponsors', style: TextStyle(color: AppColor.white))),
-          TextButton(onPressed: () => context.go('/exhibitors'), child: const Text('Exhibitors', style: TextStyle(color: AppColor.white))),
+          TextButton(
+            onPressed: () => context.go('/'),
+            child: const Text('Home', style: TextStyle(color: AppColor.white)),
+          ),
+          TextButton(
+            onPressed: () => context.go('/sessions'),
+            child: const Text(
+              'Agenda',
+              style: TextStyle(color: AppColor.white),
+            ),
+          ),
+          TextButton(
+            onPressed: () => context.go('/speakers'),
+            child: const Text(
+              'Speakers',
+              style: TextStyle(color: AppColor.white),
+            ),
+          ),
+          TextButton(
+            onPressed: () => context.go('/sponsors'),
+            child: const Text(
+              'Sponsors',
+              style: TextStyle(color: AppColor.white),
+            ),
+          ),
+          TextButton(
+            onPressed: () => context.go('/exhibitors'),
+            child: const Text(
+              'Exhibitors',
+              style: TextStyle(color: AppColor.white),
+            ),
+          ),
           const SizedBox(width: 16),
         ],
         TextButton(
           onPressed: () {},
-          child: const Text(AppString.login, style: TextStyle(color: AppColor.white, fontWeight: FontWeight.bold)),
+          child: const Text(
+            AppString.login,
+            style: TextStyle(
+              color: AppColor.white,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
         ),
         const SizedBox(width: 16),
       ],
@@ -51,7 +82,10 @@ class PortalLayout extends StatelessWidget {
         children: [
           DrawerHeader(
             decoration: const BoxDecoration(color: AppColor.primary),
-            child: const Text(AppString.appName, style: TextStyle(color: AppColor.white, fontSize: 24)),
+            child: const Text(
+              AppString.appName,
+              style: TextStyle(color: AppColor.white, fontSize: 24),
+            ),
           ),
           ListTile(
             title: const Text('Home'),

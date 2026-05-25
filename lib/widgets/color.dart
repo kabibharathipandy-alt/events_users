@@ -8,4 +8,9 @@ class AppColor {
   static const Color textSecondary = Color(0xFF757575);
   static const Color white = Colors.white;
   static const Color black = Colors.black;
+  static const Color iconcolor = Colors.black;
+  static const Color textbutton = Colors.black;
+  static const Color fontcolor = Colors.black;
+  static const Color primebuttoncolor = Colors.black;
+  static const Color gridfontcolor = Colors.black;
 }

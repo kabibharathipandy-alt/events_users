@@ -8,7 +8,11 @@ class EventDetailScreen extends StatefulWidget {
   final String eventId;
   final bool isPastEvent;
 
-  const EventDetailScreen({super.key, required this.eventId, this.isPastEvent = false});
+  const EventDetailScreen({
+    super.key,
+    required this.eventId,
+    this.isPastEvent = false,
+  });
 
   @override
   State<EventDetailScreen> createState() => _EventDetailScreenState();
@@ -17,7 +21,9 @@ class EventDetailScreen extends StatefulWidget {
 class _EventDetailScreenState extends State<EventDetailScreen> {
   Timer? _timer;
   Duration _timeLeft = const Duration();
-  final DateTime _eventStartTime = DateTime.now().add(const Duration(days: 7, hours: 19, minutes: 48, seconds: 18)); // Mock
+  final DateTime _eventStartTime = DateTime.now().add(
+    const Duration(days: 7, hours: 19, minutes: 48, seconds: 18),
+  ); // Mock
 
   @override
   void initState() {
@@ -55,8 +61,14 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text('Sign In', style: TextStyle(fontWeight: FontWeight.bold)),
-              IconButton(icon: const Icon(Icons.close), onPressed: () => Navigator.pop(context)),
+              const Text(
+                'Sign In',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+              IconButton(
+                icon: const Icon(Icons.close),
+                onPressed: () => Navigator.pop(context),
+              ),
             ],
           ),
           content: Column(
@@ -65,12 +77,20 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
             children: [
               const Divider(),
               const SizedBox(height: 16),
-              const Text('Email Address or Ticket ID', style: TextStyle(fontWeight: FontWeight.w500)),
+              const Text(
+                'Email Address or Ticket ID',
+                style: TextStyle(fontWeight: FontWeight.w500),
+              ),
               const SizedBox(height: 8),
               TextField(
                 decoration: InputDecoration(
-                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(4)),
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(4),
+                  ),
+                  contentPadding: const EdgeInsets.symmetric(
+                    horizontal: 12,
+                    vertical: 12,
+                  ),
                 ),
               ),
               const SizedBox(height: 16),
@@ -89,9 +109,14 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                     backgroundColor: const Color(0xFF6200EA), // Deep purple
                     foregroundColor: Colors.white,
                     padding: const EdgeInsets.symmetric(vertical: 16),
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(4),
+                    ),
                   ),
-                  child: const Text('GET SIGN-IN EMAIL', style: TextStyle(fontWeight: FontWeight.bold)),
+                  child: const Text(
+                    'GET SIGN-IN EMAIL',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
                 ),
               ),
             ],
@@ -122,7 +147,7 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
   Widget _buildTopNav() {
     return SliverAppBar(
       pinned: true,
-      backgroundColor: Colors.white,
+      backgroundColor: AppColor.primary,
       elevation: 1,
       automaticallyImplyLeading: false,
       title: Row(
@@ -135,7 +160,14 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
               children: [
                 Icon(Icons.arrow_back, color: Colors.black54),
                 SizedBox(width: 8),
-                Text('Kumudam Events', style: TextStyle(color: Colors.black87, fontWeight: FontWeight.bold, fontSize: 18)),
+                Text(
+                  'Kumudam Events',
+                  style: TextStyle(
+                    color: Colors.black87,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                  ),
+                ),
               ],
             ),
           ),
@@ -143,9 +175,16 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
           if (ResponsiveLayout.isDesktop(context))
             Row(
               children: [
-                _navLink('HOME', isSelected: true, onTap: () => context.go('/')),
+                _navLink(
+                  'HOME',
+                  isSelected: true,
+                  onTap: () => context.go('/'),
+                ),
                 const SizedBox(width: 24),
-                _navLink('REGISTER HERE', onTap: () => context.go('/events/${widget.eventId}/register')),
+                _navLink(
+                  'REGISTER HERE',
+                  onTap: () => context.go('/events/${widget.eventId}/register'),
+                ),
                 const SizedBox(width: 24),
                 _navLink('VENUE', onTap: () {}),
                 const SizedBox(width: 24),
@@ -156,19 +195,23 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
             IconButton(
               icon: const Icon(Icons.login, color: Colors.black),
               onPressed: () => _showSignInModal(context),
-            )
+            ),
         ],
       ),
     );
   }
 
-  Widget _navLink(String title, {bool isSelected = false, required VoidCallback onTap}) {
+  Widget _navLink(
+    String title, {
+    bool isSelected = false,
+    required VoidCallback onTap,
+  }) {
     return InkWell(
       onTap: onTap,
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
         decoration: BoxDecoration(
-          color: isSelected ? const Color(0xFF6200EA) : Colors.transparent,
+          color: isSelected ? AppColor.primary : Colors.transparent,
           borderRadius: BorderRadius.circular(4),
         ),
         child: Text(
@@ -184,12 +227,7 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
   }
 
   Widget _buildMobileLayout(BuildContext context) {
-    return Column(
-      children: [
-        _buildHero(),
-        _buildVenueSection(),
-      ],
-    );
+    return Column(children: [_buildHero(), _buildVenueSection()]);
   }
 
   Widget _buildDesktopLayout(BuildContext context) {
@@ -197,7 +235,10 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
       children: [
         _buildHero(),
         Padding(
-          padding: const EdgeInsets.symmetric(vertical: 48.0, horizontal: 128.0),
+          padding: const EdgeInsets.symmetric(
+            vertical: 48.0,
+            horizontal: 128.0,
+          ),
           child: _buildVenueSection(),
         ),
       ],
@@ -226,9 +267,15 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
             constraints: const BoxConstraints(maxWidth: 600),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(8),
-              child: Image.network(
-                'https://via.placeholder.com/600x400?text=Magalir+Thiruvizha',
+              child: Image.asset(
+                'assets/images/events (1).jpg',
                 fit: BoxFit.contain,
+                errorBuilder: (context, error, stackTrace) => Container(
+                  height: 200,
+                  color: Colors.grey.shade300,
+                  alignment: Alignment.center,
+                  child: const Icon(Icons.image, size: 64, color: Colors.grey),
+                ),
               ),
             ),
           ),
@@ -237,7 +284,11 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
           const Text(
             'Magalir Thiruvizha - Cuddalore Event 2026',
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: Colors.black87),
+            style: TextStyle(
+              fontSize: 32,
+              fontWeight: FontWeight.bold,
+              color: Colors.black87,
+            ),
           ),
           const SizedBox(height: 16),
           // Date & Time
@@ -246,11 +297,17 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
             children: [
               Icon(Icons.calendar_today, size: 16, color: Colors.black54),
               SizedBox(width: 8),
-              Text('May 30, 2026', style: TextStyle(fontSize: 16, color: Colors.black87)),
+              Text(
+                'May 30, 2026',
+                style: TextStyle(fontSize: 16, color: Colors.black87),
+              ),
               SizedBox(width: 24),
               Icon(Icons.access_time, size: 16, color: Colors.black54),
               SizedBox(width: 8),
-              Text('08:00 AM', style: TextStyle(fontSize: 16, color: Colors.black87)),
+              Text(
+                '08:00 AM',
+                style: TextStyle(fontSize: 16, color: Colors.black87),
+              ),
             ],
           ),
           const SizedBox(height: 8),
@@ -260,7 +317,10 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
             children: [
               Icon(Icons.location_on, size: 16, color: Colors.black54),
               SizedBox(width: 8),
-              Text('Cuddalore, Tamil Nadu - India', style: TextStyle(fontSize: 16, color: Colors.black87)),
+              Text(
+                'Cuddalore, Tamil Nadu - India',
+                style: TextStyle(fontSize: 16, color: Colors.black87),
+              ),
             ],
           ),
           const SizedBox(height: 32),
@@ -274,19 +334,31 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
               ),
               child: const Text(
                 'REGISTRATION CLOSED',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.black54),
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                  color: Colors.black54,
+                ),
               ),
             )
           else
             ElevatedButton(
               onPressed: () => context.go('/events/${widget.eventId}/register'),
               style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFF6200EA), // Deep purple
+                backgroundColor: AppColor.secondary, // Deep purple
                 foregroundColor: Colors.white,
-                padding: const EdgeInsets.symmetric(horizontal: 48, vertical: 16),
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 48,
+                  vertical: 16,
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(4),
+                ),
               ),
-              child: const Text('REGISTER NOW', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+              child: const Text(
+                'REGISTER NOW',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+              ),
             ),
           const SizedBox(height: 32),
           // Countdown Timer (Only if live)
@@ -323,7 +395,11 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
       alignment: Alignment.center,
       child: Text(
         time,
-        style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black87),
+        style: const TextStyle(
+          fontSize: 20,
+          fontWeight: FontWeight.bold,
+          color: Colors.black87,
+        ),
       ),
     );
   }
@@ -334,9 +410,19 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text('Venue', style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: Color(0xFF6200EA))),
+          const Text(
+            'Venue',
+            style: TextStyle(
+              fontSize: 32,
+              fontWeight: FontWeight.bold,
+              color: AppColor.textSecondary,
+            ),
+          ),
           const SizedBox(height: 8),
-          const Text('Our location and how you can get here', style: TextStyle(fontSize: 16, color: Colors.black54)),
+          const Text(
+            'Our location and how you can get here',
+            style: TextStyle(fontSize: 16, color: Colors.black54),
+          ),
           const SizedBox(height: 32),
           ResponsiveLayout.isMobile(context)
               ? Column(
@@ -365,14 +451,17 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
       children: [
         ClipRRect(
           borderRadius: BorderRadius.circular(8),
-          child: Image.network(
-            'https://via.placeholder.com/400x250?text=KSR+Mahal',
+          child: Image.asset(
+            'assets/images/events (4).jpg',
             width: double.infinity,
             fit: BoxFit.cover,
           ),
         ),
         const SizedBox(height: 24),
-        const Text('Address', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+        const Text(
+          'Address',
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        ),
         const SizedBox(height: 8),
         const Text('KSR Mahal', style: TextStyle(fontWeight: FontWeight.bold)),
         const SizedBox(height: 4),
@@ -384,12 +473,17 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
         ElevatedButton(
           onPressed: () {},
           style: ElevatedButton.styleFrom(
-            backgroundColor: const Color(0xFF6200EA),
+            backgroundColor: AppColor.primary,
             foregroundColor: Colors.white,
             padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(4),
+            ),
           ),
-          child: const Text('GET DIRECTIONS', style: TextStyle(fontWeight: FontWeight.bold)),
+          child: const Text(
+            'GET DIRECTIONS',
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
         ),
       ],
     );
@@ -410,9 +504,15 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
           children: [
             Icon(Icons.map, size: 64, color: Colors.grey),
             SizedBox(height: 16),
-            Text('Interactive Map Placeholder', style: TextStyle(color: Colors.grey, fontWeight: FontWeight.bold)),
+            Text(
+              'Interactive Map Placeholder',
+              style: TextStyle(color: Colors.grey, fontWeight: FontWeight.bold),
+            ),
             SizedBox(height: 8),
-            Text('(Requires Google Maps API Key)', style: TextStyle(color: Colors.grey, fontSize: 12)),
+            Text(
+              '(Requires Google Maps API Key)',
+              style: TextStyle(color: Colors.grey, fontSize: 12),
+            ),
           ],
         ),
       ),

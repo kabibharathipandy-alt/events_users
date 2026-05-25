@@ -7,6 +7,8 @@ import '../ui_screens/speakers_screen.dart';
 import '../ui_screens/sponsors_screen.dart';
 import '../ui_screens/exhibitors_screen.dart';
 import '../ui_screens/registration_screen.dart';
+import '../ui_screens/main_register_screen.dart';
+import '../ui_screens/main_login_screen.dart';
 import '../widgets/portal_layout.dart';
 
 final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -56,6 +58,14 @@ final appRouter = GoRouter(
             final id = state.pathParameters['id']!;
             return RegistrationScreen(eventId: id);
           },
+        ),
+        GoRoute(
+          path: '/main-register',
+          builder: (context, state) => const MainRegisterScreen(),
+        ),
+        GoRoute(
+          path: '/main-login',
+          builder: (context, state) => const MainLoginScreen(),
         ),
       ],
     ),

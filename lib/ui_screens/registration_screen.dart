@@ -21,13 +21,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     return Scaffold(
       backgroundColor: AppColor.background,
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(
-          255,
-          220,
-          233,
-          232,
-        ), // Green from screenshot
-        foregroundColor: Colors.white,
+        backgroundColor: AppColor.primary, // Green from screenshot
+        foregroundColor: Colors.black,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () => context.go('/'),
@@ -42,11 +37,11 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             SizedBox(height: 4),
             Row(
               children: [
-                Icon(Icons.calendar_today, size: 12, color: Colors.white),
+                Icon(Icons.calendar_today, size: 12, color: Colors.black),
                 SizedBox(width: 4),
                 Text('May 30, 2026', style: TextStyle(fontSize: 12)),
                 SizedBox(width: 16),
-                Icon(Icons.location_on, size: 12, color: Colors.white),
+                Icon(Icons.location_on, size: 12, color: Colors.black),
                 SizedBox(width: 4),
                 Text(
                   'Chennai, Tamil Nadu - India',
@@ -133,7 +128,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             children: [
               const Text(
                 'Purchaser and attendee information',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                style: TextStyle(fontWeight: FontWeight.bold),
               ),
               Row(
                 children: [
@@ -270,6 +265,30 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               const Text('No'),
             ],
           ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Expanded(
+                child: Text(
+                  'Yes, we can use these details for registration. Next time, when the user applies again, the form can be auto-filled directly. The user only needs to check the details and click the Submit button, without filling the entire form again.',
+                  style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+                ),
+              ),
+              const SizedBox(width: 16),
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Checkbox(
+                    value: _isAttending,
+                    onChanged: (val) =>
+                        setState(() => _isAttending = val ?? false),
+                  ),
+                  const Text('Yes'),
+                ],
+              ),
+            ],
+          ),
         ],
       ),
     );
@@ -378,14 +397,14 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           // Complete registration
         },
         style: ElevatedButton.styleFrom(
-          backgroundColor: const Color(0xFF00BFA5), // Green
+          backgroundColor: AppColor.primary,
           foregroundColor: Colors.white,
           padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
         ),
         child: const Text(
           'CONTINUE',
-          style: TextStyle(fontWeight: FontWeight.bold),
+          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
         ),
       ),
     );
